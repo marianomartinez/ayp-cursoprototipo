@@ -1,282 +1,251 @@
 <!doctype html>
 <html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="description" content="La Asociación Civil Arte y Parte presenta su programa de *ARTE, JUEGO Y APRENDIZAJE*. Ofrece cursos online en forma gratuita y los mismos descargargables para que se aprovechen en cualquier dispositivo fuera de linea. Un espacio abierto para quien guste explorar nuevos caminos para el aprendizaje; para enriqucer su capacidad de juego y darte el gusto de jugar inteligentemente.">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="generator" content="Google Codelabs">
-  <meta name="application-name" content="Google Codelabs">
 
-  <title>Manos Cantoras</title>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description"
+      content="La Asociación Civil Arte y Parte presenta su programa de *ARTE, JUEGO Y APRENDIZAJE*. Ofrece cursos online en forma gratuita y los mismos descargargables para que se aprovechen en cualquier dispositivo fuera de linea. Un espacio abierto para quien guste explorar nuevos caminos para el aprendizaje; para enriqucer su capacidad de juego y darte el gusto de jugar inteligentemente.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Google Codelabs">
+    <meta name="application-name" content="Google Codelabs">
 
-  <link rel="manifest" href="manifest.json">
-  <!-- Add to homescreen for Safari on iOS -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="#37474F">
-  <meta name="apple-mobile-web-app-title" content="Google Codelabs">
-  <!-- Win 8 -->
-  <meta name="msapplication-TileImage" content="images/touch/icon_144.png">
-  <meta name="msapplication-TileColor" content="#37474F">
+    <title>Manos Cantoras</title>
 
-  <link rel="stylesheet" href="styles/main.css">
-  <link rel="import" href="elements/critical.html" async>
+    <link rel="manifest" href="manifest.json">
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#37474F">
+    <meta name="apple-mobile-web-app-title" content="Google Codelabs">
+    <!-- Win 8 -->
+    <meta name="msapplication-TileImage" content="images/touch/icon_144.png">
+    <meta name="msapplication-TileColor" content="#37474F">
+
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="import" href="elements/critical.html" async>
 
 
-<style is="custom-style">
-    :root {
-      --paper-tabs-selection-bar-color: currentcolor;
-      --paper-input-container-underline: {
-        display: none;
-      };
-      --paper-input-container-underline-focus: {
-        display: none;
-      };
-    }
+    <style is="custom-style">
+      :root {
+        --paper-tabs-selection-bar-color: currentcolor;
 
-    #mainToolbar paper-icon-button {
-      --paper-icon-button-ink-color: rgba(255,255,255,0.6);
-    }
+        --paper-input-container-underline: {
+          display: none;
+          };
 
-    .loading paper-drawer-panel {
-      --paper-drawer-panel-scrim: {
-        display: none;
-      };
-    }
+        --paper-input-container-underline-focus: {
+          display: none;
+          };
+      }
 
-    #langselect {
-      --paper-input-container-input: {
-        text-transform: uppercase;
-        font-size: inherit;
-      };
-    }
+      #mainToolbar paper-icon-button {
+        --paper-icon-button-ink-color: rgba(255, 255, 255, 0.6);
+      }
 
-    #categoryfilter {
-      --paper-input-container: {
-        padding: 8px;
-      };
-    }
-  </style>
-</head>
-<!-- <body id="app" is="my-app" class="loading fullbleed "> -->
-<body id="app" is="body-bind" class="loading fullbleed ">
-   
+      .loading paper-drawer-panel {
+        --paper-drawer-panel-scrim: {
+          display: none;
+        };
+      }
 
-  <span id="browser-sync-binding"></span>
+      #langselect {
+        --paper-input-container-input: {
+          text-transform: uppercase;
+          font-size: inherit;
+        };
+      }
 
-  <!-- Needed 2 queries due to https://github.com/PolymerElements/iron-media-query/issues/15 -->
-  <iron-media-query query="(max-width:768px)" hidden
-      query-matches="{{isPhoneSize}}"></iron-media-query>
-  <iron-media-query query="(min-width: 768px)" hidden
-      query-matches="{{isDesktopSize}}"></iron-media-query>
+      #categoryfilter {
+        --paper-input-container: {
+          padding: 8px;
+        };
+      }
+    </style>
+  </head>
+  <!-- <body id="app" is="my-app" class="loading fullbleed "> -->
 
-  
+  <body id="app" is="body-bind" class="loading fullbleed ">
+    <span id="browser-sync-binding"></span>
+
+    <!-- Needed 2 queries due to https://github.com/PolymerElements/iron-media-query/issues/15 -->
+    <iron-media-query query="(max-width:768px)" hidden query-matches="{{isPhoneSize}}"></iron-media-query>
+    <iron-media-query query="(min-width: 768px)" hidden query-matches="{{isDesktopSize}}"></iron-media-query>
 
     <paper-header-panel id="main" mode="waterfall" main>
-    
-    
-    <div id="banner" class="paper-header"><a href="https://www.ayp.org.ar" target="_blank">
-    <table width="100%" border="0">
-  <tbody>
-    <tr>
-      <td width="" align="left" valign="middle"><img style="max-width: 90.00px" src="img/logoayp1.png" alt="Arte y Parte, educar y crecer con arte A.C."></td>
-      <td width="50%"><img src="img/vacio.png"></td>
-      <td width="" align="right" valign="middle"><img src="img/aja2018_ch.jpg " alt="Programa AJA" class="layout"  style="max-width: 170.00px" align="rigth"></td>
-    </tr>
-  </tbody>
-</table>
-</a> </div>
+      <div id="banner" class="paper-header"><a href="https://www.ayp.org.ar" target="_blank">
+          <table width="100%" border="0">
+            <tbody>
+              <tr>
+                <td width="" align="left" valign="middle"><img style="max-width: 90.00px" src="img/logoayp1.png"
+                    alt="Arte y Parte, educar y crecer con arte A.C."></td>
+                <td width="50%"><img src="img/vacio.png"></td>
+                <td width="" align="right" valign="middle"><img src="img/aja2018_ch.jpg " alt="Programa AJA"
+                    class="layout" style="max-width: 170.00px" align="rigth"></td>
+              </tr>
+            </tbody>
+          </table>
+        </a>
+      </div>
       <div></div>
       <div class="paper-header manos-bg">
-       <div class="text-titulo-blanco"><img style="max-width: 70.00px" align="center" src="img/manos-icon2.png"><img src="img/vacio.png" width="60" height="60" style="max-width: 20.00px" align="center"> MANOS CANTORAS<img src="img/vacio.png" width="100" height="60" style="max-width: 20.00px" align="center">
-    </div>
+        <div class="text-titulo-blanco"><img style="max-width: 70.00px" align="center" src="img/manos-icon2.png"><img
+            src="img/vacio.png" width="60" height="60" style="max-width: 20.00px" align="center">MANOS CANTORAS<img
+            src="img/vacio.png" width="100" height="60" style="max-width: 20.00px" align="center">
+        </div>
       </div>
-      
-    
+
       <header id="banner" down$="[[_toBoolean(selectedFilter)]]">
         <div>
           <div class="site-width layout horizontal center justified">
-
-            </div>
-
-     
-              
-<template is="dom-if"
-                      if="[[_showMoreFiltersArrow(selectedFilter,isDesktopSize)]]">
-          <div class="banner_arrows">
-                <paper-icon-button icon="paper-tabs:chevron-left"
-                    on-tap="_shiftContentLeft"></paper-icon-button>
-                <paper-icon-button icon="paper-tabs:chevron-right"
-                    on-tap="_shiftContentRight"></paper-icon-button>
           </div>
+          <template is="dom-if" if="[[_showMoreFiltersArrow(selectedFilter,isDesktopSize)]]">
+            <div class="banner_arrows">
+              <paper-icon-button icon="paper-tabs:chevron-left" on-tap="_shiftContentLeft"></paper-icon-button>
+              <paper-icon-button icon="paper-tabs:chevron-right" on-tap="_shiftContentRight"></paper-icon-button>
+            </div>
           </template>
         </div>
         </div>
         <div class="site-width">
-          
-          
-          <br><div class="banner-info"
-               data-filter-selected$="[[_toBoolean(selectedFilter)]]">
+          <br>
+          <div class="banner-info" data-filter-selected$="[[_toBoolean(selectedFilter)]]">
             <table width="100%" border="0">
-  <tbody>
-    <tr>
-      <td align="left" valign="top"><span class="text-titulo-">Bienvenid@ al curso</span></td>
-      <td align="center" valign="top"><img style="max-width: 50.00px" valign="middle" src="img/certif.png"  alt=""/>   <paper-button> <a href="https://www.ayp.org.ar/aulas/" target="_blank">AULA VIRTUAL</a></paper-button></td>
-      </tr>
-      </tbody>
-      </table>
-          </div> 
+              <tbody>
+                <tr>
+                  <td align="left" valign="top"><span class="text-titulo-">Bienvenid@ al curso</span></td>
+                  <td align="center" valign="top"><img style="max-width: 50.00px" valign="middle" src="img/certif.png"
+                      alt="" />
+                    <paper-button> <a href="https://www.ayp.org.ar/aulas/" target="_blank">AULA VIRTUAL</a></paper-button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </header>
 
       <main>
         <div class="site-width layout horizontal center justified">
           <div id="sortby">
-         
           </div>
-            
-          </paper-dropdown-menu></div>
-
+          </paper-dropdown-menu>
+        </div>
         <card-sorter id="cards" class="site-width">
-          
+          <a href="archivos/index.html" on-tap="navigate" class="codelab-card category-ritmo" data-category="Video"
+            data-title="Manos Cantoras" data-duration="" data-updated="" data-tags="" data-pin="" data-wait-for-ripple>
+            <div class="card-header manos-bg">
+              <div id="icon" class="category-icon manos-icon"></div>
+              <div class="card-duration">
+                <img style="max-width: 50.00px" src="img/video.jpg">
+              </div>
+            </div>
+            <div class="description"><strong>CLASES SEMANALES</strong><br>
+              El curso se organiza en cuatro semanas. Si sigues el orden propuesto podrás aprovechar al máximo el proceso
+              de enseñanza-aprendizaje que te ofrecemos.
+            </div>
+            <div class="card-footer" align="center">
+              <button> ENTRAR </button>
+              <div>
+                <div class="card-updated"></div>
+              </div>
+            </div>
+            <paper-ripple></paper-ripple>
+          </a>
 
-            
-          <a href="archivos/index.html" on-tap="navigate"
-                 class="codelab-card category-ritmo"
-                 data-category="Video"
-                 data-title="Manos Cantoras"
-                 data-duration=""
-                 data-updated=""
-                 data-tags=""
-                 data-pin=""
-                 data-wait-for-ripple>
-                <div class="card-header manos-bg">
-                  <div id="icon" class="category-icon manos-icon"></div>
-                <div class="card-duration">
-                      <img style="max-width: 50.00px" src="img/video.jpg">
-                      
-                    </div>
-          </div>
-                <div class="description"><strong>CLASES SEMANALES</strong><br> 
-	El curso se organiza en cuatro semanas. Si sigues el orden propuesto podrás aprovechar al máximo el proceso de enseñanza-aprendizaje que te ofrecemos.
-</div>
-                <div class="card-footer" align="center">
-                  <button> ENTRAR </button>
-                  <div>
-                  <div class="card-updated"></div>
-                  </div>
-                </div>
-                <paper-ripple></paper-ripple>
-              </a>              
+          <a href="archivos/MAN_ayv.html" on-tap="navigate" class="codelab-card category-ritmo" data-category="Audio"
+            data-title="Manos cantoras" data-duration="" data-updated="" data-tags="" data-pin="" data-wait-for-ripple>
+            <div class="card-header manos-bg">
+              <div id="icon" class="category-icon manos-icon"></div>
+              <div class="card-duration">
+                <img style="max-width: 50.00px" src="img/Folders.png">
+              </div>
+            </div>
+            <div class="description"><strong>AUDIO Y VIDEO</strong><br>
+              Los archivos multimedia sueltos ordenados alfabéticamente para poder acceder a estos de una manera rápida y
+              sencilla.</div>
+            <div class="card-footer" align="center">
+              <button> ENTRAR </button>
+              <div>
+                <div class="card-updated"></div>
+              </div>
+            </div>
+            <paper-ripple></paper-ripple>
+          </a>
 
-           
-               
-
-              
-                 <a href="archivos/MAN_ayv.html" on-tap="navigate"
-                 class="codelab-card category-ritmo"
-                 data-category="Audio"
-                 data-title="Manos cantoras"
-                 data-duration=""
-                 data-updated=""
-                 data-tags=""
-                 data-pin=""
-                 data-wait-for-ripple>
-                <div class="card-header manos-bg">
-                  <div id="icon" class="category-icon manos-icon"></div>
-                <div class="card-duration">
-                      <img style="max-width: 50.00px" src="img/Folders.png">
-                      
-                    </div>
-          </div>
-                <div class="description"><strong>AUDIO Y VIDEO</strong><br>
-Los archivos multimedia sueltos ordenados alfabéticamente para poder acceder a estos de una manera rápida y sencilla.</div>
-                <div class="card-footer" align="center">
-                  <button> ENTRAR </button>
-                  <div>
-                  <div class="card-updated"></div>
-                  </div>
-                </div>
-                <paper-ripple></paper-ripple>
-              </a> 
-
-              <a href="archivos/MAN_cert.html" on-tap="navigate"
-                 class="codelab-card category-ritmo"
-                 data-category="Lecturas"
-                 data-title="Manos cantoras"
-                 data-duration=""
-                 data-updated=""
-                 data-tags=""
-                 data-pin=""
-                 data-wait-for-ripple>
-                <div class="card-header manos-bg">
-                  <div id="icon" class="category-icon manos-icon"></div>
-                <div class="card-duration">
-                      <img style="max-width: 50.00px" src="img/biblio.png">
-                      
-               </div>
-          </div>
-                <div class="description"><strong>TUTORÍA Y CERTIFICACIÓN</strong><br> 	En el caso de que desees obtener una certificación de aprobación del curso. Te ofrecemos aquí toda la información y acceso a las aulas virtuales.
-</div>
-                <div class="card-footer" align="center">
-                  <button> ENTRAR </button>
-                  <div>
-                  <div class="card-updated"></div>
-                  </div>
-                </div>
-                <paper-ripple></paper-ripple>
-              </a> 
-
+          <a href="archivos/MAN_cert.html" on-tap="navigate" class="codelab-card category-ritmo" data-category="Lecturas"
+            data-title="Manos cantoras" data-duration="" data-updated="" data-tags="" data-pin="" data-wait-for-ripple>
+            <div class="card-header manos-bg">
+              <div id="icon" class="category-icon manos-icon"></div>
+              <div class="card-duration">
+                <img style="max-width: 50.00px" src="img/biblio.png">
+              </div>
+            </div>
+            <div class="description"><strong>TUTORÍA Y CERTIFICACIÓN</strong><br> En el caso de que desees obtener una
+              certificación de aprobación del curso. Te ofrecemos aquí toda la información y acceso a las aulas virtuales.
+            </div>
+            <div class="card-footer" align="center">
+              <button> ENTRAR </button>
+              <div>
+                <div class="card-updated"></div>
+              </div>
+            </div>
+            <paper-ripple></paper-ripple>
+          </a>
         </card-sorter>
-
       </main>
-
-
 
       <div class="footerbar">
         <div class="site-width layout horizontal center justified">
           <span>
-            <img style="max-width: 50.00px" src="img/e-mail.png"> <a href="http://www.ayp.org.ar/contacto/" alt="formulario de contacto">Comúnicate con nosotros</a>
+            <img style="max-width: 50.00px" src="img/e-mail.png"> <a href="http://www.ayp.org.ar/contacto/"
+              alt="formulario de contacto">Comúnicate con nosotros</a>
             &nbsp; | &nbsp;
-            <a href="http://www.ayp.org.ar/aja/" class="gc-analytics-event" data-category="Site-Wide Custom Events" data-label="Footer Privacy Link">Programa Arte, juego y aprendizaje</a><BR><BR><BR><BR>
+            <a href="http://www.ayp.org.ar/aja/" class="gc-analytics-event" data-category="Site-Wide Custom Events"
+              data-label="Footer Privacy Link">Programa Arte, juego y aprendizaje</a><BR><BR><BR><BR>
           </span>
           <!-- <paper-dropdown-menu id="langselect" label="Language" no-label-float vertical-align="bottom">
-            <paper-listbox class="dropdown-content" selected="en" attr-for-selected="lang">
-              <paper-item lang="en">English</paper-item>
-              <paper-item lang="fr">français</paper-item>
-              <paper-item lang="de">Deutsch</paper-item>
-              <paper-item lang="it">italiano</paper-item>
-              <paper-item lang="ru">Русский</paper-item>
-              <paper-item lang="es">Español</paper-item>
-            </paper-listbox>
-          </paper-dropdown-menu> -->
+              <paper-listbox class="dropdown-content" selected="en" attr-for-selected="lang">
+                <paper-item lang="en">English</paper-item>
+                <paper-item lang="fr">français</paper-item>
+                <paper-item lang="de">Deutsch</paper-item>
+                <paper-item lang="it">italiano</paper-item>
+                <paper-item lang="ru">Русский</paper-item>
+                <paper-item lang="es">Español</paper-item>
+              </paper-listbox>
+            </paper-dropdown-menu> -->
 
-          <span><rigth><a href="" title="Grupo de Investigación, Producción y Educación Musical"> <img src="img/gipemlogo-ch.png" height="40"></a></rigth><BR><BR><BR><BR></span>
+          <span>
+            <rigth>
+              <a href="" title="Grupo de Investigación, Producción y Educación Musical">
+                <img src="img/gipemlogo-ch.png" height="40">
+              </a>
+            </rigth>
+            <BR><BR><BR><BR>
+          </span>
         </div>
-        
       </div>
 
     </paper-header-panel>
-  </paper-drawer-panel>
+    </paper-drawer-panel>
 
-  <!-- <paper-toast id="caching-complete"
-               duration="6000"
-               text="Caching complete! This app will work offline.">
-  </paper-toast> -->
+    <!-- <paper-toast id="caching-complete"
+                duration="6000"
+                text="Caching complete! This app will work offline.">
+    </paper-toast> -->
 
-  <!-- <platinum-sw-register auto-register
-                        clients-claim
-                        skip-waiting
-                        on-service-worker-installed="displayInstalledToast">
-    <platinum-sw-cache default-cache-strategy="networkFirst"
-                       precache-file="precache.json">
-    </platinum-sw-cache>
-    <platinum-sw-fetch handler="networkOnly"
-                       path="/preview/.*">
-    </platinum-sw-fetch>
-  </platinum-sw-register> -->
+    <!-- <platinum-sw-register auto-register
+                          clients-claim
+                          skip-waiting
+                          on-service-worker-installed="displayInstalledToast">
+      <platinum-sw-cache default-cache-strategy="networkFirst"
+                        precache-file="precache.json">
+      </platinum-sw-cache>
+      <platinum-sw-fetch handler="networkOnly"
+                        path="/preview/.*">
+      </platinum-sw-fetch>
+    </platinum-sw-register> -->
 
-  <script src="scripts/app.js" async></script>
+    <script src="scripts/app.js" async></script>
 
+  </body>
 
-</body>
 </html>
